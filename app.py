@@ -5,15 +5,9 @@ import pickle
 
 app = Flask(__name__)
 
-# # Load the trained RandomForestClassifier model
-# with open('random_forest_model.pkl', 'rb') as file:
-#     model_rf = pickle.load(file)
-
-
 # Load the trained RandomForestClassifier model
 with open('trained_model.pkl', 'rb') as f:
     model_rf = pickle.load(f)
-
 
 with open('NAME_CONTRACT_TYPELE.pickle', 'rb') as f:
     name_contract_type_encoder = pickle.load(f)
@@ -45,44 +39,10 @@ def overview():
     # Redirect to the project overview page
     return render_template('overview.html')
 
-# Route for the members page
-@app.route('/members')
-def members():
-    # Redirect to the members page
-    return render_template('members.html')
-
 
 # Define route for making predictions
 @app.route('/predict', methods=['POST'])
-def predict():
-    # Load pickled encoders
-
-    # Load the trained RandomForestClassifier model
-    # with open('trained_model.pkl', 'rb') as file:
-    #     model_rf = pickle.load(file)
-
-
-    # with open('NAME_CONTRACT_TYPELE.pickel', 'rb') as f:
-    #     name_contract_type_encoder = pickle.load(f)
-
-    # with open('CODE_GENDERLE.pickel', 'rb') as f:
-    #     code_gender_encoder = pickle.load(f)
-
-    # with open('NAME_INCOME_TYPELE.pickel', 'rb') as f:
-    #     name_income_type_encoder = pickle.load(f)
-
-    # with open('NAME_EDUCATION_TYPELE.pickel', 'rb') as f:
-    #     name_education_type_encoder = pickle.load(f)
-
-    # with open('NAME_HOUSING_TYPELE.pickel', 'rb') as f:
-    #     name_housing_type_encoder = pickle.load(f)
-
-    # with open('ORGANIZATION_TYPELE.pickel', 'rb') as f:
-    #     organization_type_encoder = pickle.load(f)
-
-
-
-    
+def predict():    
     # Get user input from form
     input_data = [
         int(request.form['region_rating_client_w_city']), 
